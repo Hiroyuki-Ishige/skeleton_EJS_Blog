@@ -1,0 +1,78 @@
+<%- include("partials/header.ejs")%>
+
+<div class="container custom-margin-top-100px custom-margin-bottom-50px">
+  <div class="row">
+    <h1>Hello. This is my blog</h1>
+    <h2>Please fill in your blog below</h2>
+    <!--add input box  -->
+  </div>
+</div>
+
+<div class="container custom-margin-bottom-50px">
+  
+  <div class="row">
+    <form method="POST" action="/submit">
+      <div class="form-group row">
+        <label for="inputNickname" class="col-sm-2 col-form-label"><h4>Your nick name</h4></label>
+        <div class="col-sm-10">
+          <input type="text" name ="Nickname" class="form-control" id="inputNickname" placeholder="Nick name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputTitle" class="col-sm-2 col-form-label"><h4>Title</h4></label>
+        <div class="col-sm-10">
+          <input type="text" name="Title" class="form-control" id="inputTitle" placeholder="Title">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputBody" class="col-sm-2 col-form-label"><h4>Body</h4></label>
+        <div class="col-sm-10">
+          <textarea class="form-control" name="body" id="inputBody" placeholder="Your article"></textarea>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+</div>
+
+<!-- TODO show post date -->
+<div class="container custom-margin-bottom-50px">
+  <div class="row">
+    <% if(locals.nicknameToSite && locals.titleToSite && locals.bodyToSite ){%>
+    <h2>Latest post</h2>
+    <p>Nickname: <%= nicknameToSite %></p>
+    <p>Title: <%= titleToSite %></p>
+    <p><%= bodyToSite %></p>
+    <p><%=  %></p>
+
+    <% }else{ %>
+      <p>No blog</p>
+    <% } %>
+
+
+
+  </div>
+</div>
+
+<div class="container custom-margin-bottom-50px">
+  <div class="row">
+    <h1>Blog list</h1>
+      <ul>
+        <% blogs.slice().reverse().forEach(function(blog, index) { %>
+          <li> <a href="/blog_detail/<%= index%>"> Title: <%= blog.Title %> </a><br>
+            <%= blog.body.length > 100 ? blog.body.substring(0, 100) + '...' : blog.body %> <br>
+            By:<%= blog.Nickname %> Date:<%= blog.date%> <br>
+          </li>
+        <% }) %>
+      </ul>
+  </div>
+</div>
+
+
+<%- include("partials/footer.ejs")%>

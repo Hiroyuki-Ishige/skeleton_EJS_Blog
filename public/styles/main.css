@@ -1,0 +1,20 @@
+body{
+    font-family:'Times New Roman', Times, serif
+}
+
+/* h2{
+    color: blue;
+} */
+
+/* To change Bootstrap Navbar bg color:
+https://www.geeksforgeeks.org/how-to-change-navigation-bar-color-in-bootstrap/
+
+*/
+
+.custom-margin-top-100px{
+    margin-top: 100px;
+}
+
+.custom-margin-bottom-50px{
+    margin-bottom: 50px;
+}
